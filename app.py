@@ -1,10 +1,8 @@
-import logging
-
 from flask import Flask, render_template
 
-from main.main import main_blueprint
+from main_folder.main import main_blueprint
 
-app = Flask(__name__)
+app = Flask("app")
 
 app.register_blueprint(main_blueprint)
 
@@ -16,8 +14,8 @@ def page_not_found(e):
 def page_enternal(e):
     return render_template('page500.html'), 500
 
+app.run(debug=True, host='0.0.0.0')
 
-
-if __name__ == "__main__":
-
-    app.run(debug=True, host='0.0.0.0')
+# if __name__ == "__main__":
+#
+#     app.run(debug=True, host='0.0.0.0')

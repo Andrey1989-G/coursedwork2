@@ -2,7 +2,7 @@
 import json
 import logging
 
-from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from flask import Blueprint, render_template, request, jsonify
 
 from utils import get_posts_all, get_comments_by_post_id, get_post_by_pk, search_for_posts, get_posts_by_user, for_views
 
@@ -30,9 +30,7 @@ def post_page(postid):
     com_len = len(post_comms)
     return render_template('post.html', post_pk=post_pk, post_comms=post_comms, com_len=com_len)
 
-# @main_blueprint.route('/search', methods=['POST', 'GET'])
-# def search_posts():
-#
+
 @main_blueprint.route('/results/', methods=['POST', 'GET'])
 def page_search_results():
     answer = request.values.get('query')
